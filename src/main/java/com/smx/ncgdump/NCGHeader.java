@@ -45,14 +45,14 @@ public class NCGHeader {
 		md.update(bodyData);
 		byte[] digest = md.digest();
 		
-		System.out.println("> Digest      : " + Hex.encodeHexString(digest).toUpperCase());
+		//System.out.println("> Digest      : " + Hex.encodeHexString(digest).toUpperCase());
 		digest = Crypto.aesDecrypt(
 				digest,
 				Hex.decodeHex(HEADER_KEY),
 				Hex.decodeHex(HEADER_IV));
 				
-		System.out.println("> Digest-AES  : " + Hex.encodeHexString(digest).toUpperCase());
-		System.out.println("> Expected    : " + Hex.encodeHexString(expectedDigest).toUpperCase());
+		//System.out.println("> Digest-AES  : " + Hex.encodeHexString(digest).toUpperCase());
+		//System.out.println("> Expected    : " + Hex.encodeHexString(expectedDigest).toUpperCase());
 		
 		if(!Arrays.equals(digest, expectedDigest)){
 			throw new RuntimeException("Digest check failed");
