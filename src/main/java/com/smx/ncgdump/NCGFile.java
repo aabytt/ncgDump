@@ -7,6 +7,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.apache.commons.codec.binary.Hex;
@@ -55,8 +56,8 @@ public class NCGFile {
 		
 		try {
 			// sample keys!
-			byte[] aes_key = Hex.decodeHex("93eadc96da53793d8506e2c7b6aa48b2");
-			byte[] aes_iv = Hex.decodeHex("288da67bac65ce383cb86289e4b84f77");
+    			byte[] aes_key = Hex.decodeHex(new String(Files.readAllBytes(Paths.get("aes_key"))).trim());
+  			byte[] aes_iv = Hex.decodeHex(new String(Files.readAllBytes(Paths.get("iv_key"))).trim());
 			new NCGDecoder(this, aes_key, aes_iv).getContents();
 		} catch(Exception ex){
 			throw new RuntimeException(ex);
