@@ -57,7 +57,7 @@ public class NCGFile {
 		try {
 			// sample keys!
     			byte[] aes_key = Hex.decodeHex(new String(Files.readAllBytes(Paths.get("aes_key"))).trim());
-  			byte[] aes_iv = Hex.decodeHex(new String(Files.readAllBytes(Paths.get("iv_key"))).trim());
+  			byte[] aes_iv = Hex.decodeHex(new String(Files.readAllBytes(Paths.get("aes_iv"))).trim());
 			new NCGDecoder(this, aes_key, aes_iv).getContents();
 		} catch(Exception ex){
 			throw new RuntimeException(ex);
